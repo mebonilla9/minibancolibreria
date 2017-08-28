@@ -57,7 +57,4 @@ public class Auditoria {
   public void setIdCliente(Cliente idCliente) {
     this.idCliente = idCliente;
   }
-  
-  
-  
 }
