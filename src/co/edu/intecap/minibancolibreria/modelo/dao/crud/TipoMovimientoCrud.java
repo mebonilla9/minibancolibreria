@@ -5,7 +5,10 @@
  */
 package co.edu.intecap.minibancolibreria.modelo.dao.crud;
 
+import co.edu.intecap.minibancolibreria.modelo.conexion.Conexion;
 import co.edu.intecap.minibancolibreria.modelo.vo.TipoMovimiento;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -15,9 +18,22 @@ import java.util.List;
  */
 public class TipoMovimientoCrud implements IGenericoDao<TipoMovimiento>{
 
+    protected final int ID = 1;
+    protected Connection cnn;
+
+    public TipoMovimientoCrud(Connection cnn) {
+        this.cnn = cnn;
+    }
     @Override
     public void insertar(TipoMovimiento entidad) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement sentencia = null;
+        try {
+            int i = 1;
+            String sql = "INSERT INTO tipo_movimiento(nombre, estado) VALUES (?,?)";
+
+        } finally {
+            Conexion.desconectar(sentencia);
+        }
     }
 
     @Override
