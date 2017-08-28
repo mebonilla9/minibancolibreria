@@ -36,6 +36,7 @@ nbdist/
 .nb-gradle/
 build.xml
 manifest.mf
+nbbuild.xml
 
 *.bak
 
