@@ -17,10 +17,13 @@ public class Movimiento {
     private String descripcion;
     private Date fecha;
     private Long valor;
-    private Integer cuotas;
+    private Integer cuota;
     private TipoMovimiento tipoMovimiento;
     private ClienteProducto clienteProducto;
 
+    public Movimiento() {
+    }
+    
     public Movimiento(Long idMovimiento) {
         this.idMovimiento = idMovimiento;
     }
@@ -57,12 +60,12 @@ public class Movimiento {
         this.valor = valor;
     }
 
-    public Integer getCuotas() {
-        return cuotas;
+    public Integer getCuota() {
+        return cuota;
     }
 
-    public void setCuotas(Integer cuotas) {
-        this.cuotas = cuotas;
+    public void setCuota(Integer cuota) {
+        this.cuota = cuota;
     }
 
     public TipoMovimiento getTipoMovimiento() {

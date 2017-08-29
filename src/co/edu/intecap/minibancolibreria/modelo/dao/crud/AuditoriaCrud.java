@@ -88,7 +88,7 @@ public class AuditoriaCrud implements IGenericoDao<Auditoria> {
   }
 
   @Override
-  public Auditoria consular(Long id) throws SQLException {
+  public Auditoria consultar(Long id) throws SQLException {
     PreparedStatement sentencia = null;
     Auditoria auditoria = new Auditoria();
     try {

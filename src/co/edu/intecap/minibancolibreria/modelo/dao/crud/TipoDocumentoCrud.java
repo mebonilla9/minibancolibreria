@@ -47,7 +47,7 @@ public class TipoDocumentoCrud implements IGenericoDao<TipoDocumento>{
     }
 
     @Override
-    public TipoDocumento consular(Long id) throws SQLException {
+    public TipoDocumento consultar(Long id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

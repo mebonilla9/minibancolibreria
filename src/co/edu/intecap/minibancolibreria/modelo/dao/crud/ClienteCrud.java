@@ -107,7 +107,7 @@ public class ClienteCrud implements IGenericoDao<Cliente> {
     }
 
     @Override
-    public Cliente consular(Long id) throws SQLException {
+    public Cliente consultar(Long id) throws SQLException {
         PreparedStatement sentencia = null;
         Cliente cliente = new Cliente();
         try{

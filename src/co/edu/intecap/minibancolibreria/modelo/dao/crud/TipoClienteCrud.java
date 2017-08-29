@@ -48,7 +48,7 @@ public class TipoClienteCrud implements IGenericoDao<TipoCliente> {
     }
 
     @Override
-    public TipoCliente consular(Long id) throws SQLException {
+    public TipoCliente consultar(Long id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -20,6 +20,6 @@ public interface IGenericoDao<T> {
     
     public List<T> consultar() throws SQLException;
     
-    public T consular(Long id) throws SQLException;
+    public T consultar(Long id) throws SQLException;
     
 }
