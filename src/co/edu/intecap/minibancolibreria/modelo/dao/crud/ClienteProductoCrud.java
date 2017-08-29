@@ -105,8 +105,7 @@ public class ClienteProductoCrud implements IGenericoDao<ClienteProducto> {
     }
 
     @Override
-<<<<<<< HEAD
-    public ClienteProducto consular(Long id) throws SQLException {
+    public ClienteProducto consultar(Long id) throws SQLException {
         PreparedStatement sentencia = null;
         ClienteProducto clienteProducto = new ClienteProducto();
         try {
@@ -123,12 +122,8 @@ public class ClienteProductoCrud implements IGenericoDao<ClienteProducto> {
         }
         
         return clienteProducto;
-=======
-    public ClienteProducto consultar(Long id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
->>>>>>> 7aeee240e3f3ffa922c5d406fcb07657306e8aa9
     }
-
+    
     private static ClienteProducto getClienteProducto(ResultSet rs) throws SQLException {
         ClienteProducto clienteProducto = new ClienteProducto();
         clienteProducto.setIdClienteProducto(rs.getLong("id_cliente_producto"));
@@ -145,4 +140,5 @@ public class ClienteProductoCrud implements IGenericoDao<ClienteProducto> {
         return clienteProducto;
     }
 
+    
 }
