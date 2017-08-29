@@ -73,7 +73,7 @@ public class TipoProductoCrud implements IGenericoDao<TipoProducto> {
             sentencia = cnn.prepareCall(sql);
             ResultSet rs = sentencia.executeQuery();
             while(rs.next()){
-                //VOY ACA A CREAR UN METODO
+                lista.add(getTipoProducto(rs));
             }          
         } finally {
             Conexion.desconectar(sentencia);
@@ -82,8 +82,29 @@ public class TipoProductoCrud implements IGenericoDao<TipoProducto> {
     }
 
     @Override
-    public TipoProducto consular(Long id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public TipoProducto consultar(Long id) throws SQLException {
+        PreparedStatement sentencia = null;
+        TipoProducto tipoProducto = new TipoProducto();
+        try {
+            String sql = "SELECT * FROM tipo_producto WHERE id_tipo_producto = ?;";
+            sentencia = cnn.prepareStatement(sql);
+            sentencia.setLong(ID, id);
+            ResultSet rs = sentencia.executeQuery();
+            if (rs.next()) {
+                tipoProducto = getTipoProducto(rs);
+            }
+        } finally {
+            Conexion.desconectar(sentencia);
+        }
+        return tipoProducto;
+    }
+
+    private TipoProducto getTipoProducto(ResultSet rs) throws SQLException{
+        TipoProducto tipoProducto = new TipoProducto();
+        tipoProducto.setIdTipoProducto(rs.getLong("id_tipo_producto"));
+        tipoProducto.setNombre(rs.getString("nombre"));
+        tipoProducto.setEstado(rs.getBoolean("estado"));
+        return tipoProducto;
     }
 
 }

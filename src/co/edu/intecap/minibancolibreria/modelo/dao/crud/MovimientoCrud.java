@@ -7,7 +7,9 @@ package co.edu.intecap.minibancolibreria.modelo.dao.crud;
 
 import co.edu.intecap.minibancolibreria.modelo.conexion.Conexion;
 import co.edu.intecap.minibancolibreria.modelo.vo.Cliente;
+import co.edu.intecap.minibancolibreria.modelo.vo.ClienteProducto;
 import co.edu.intecap.minibancolibreria.modelo.vo.Movimiento;
+import co.edu.intecap.minibancolibreria.modelo.vo.TipoMovimiento;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -84,7 +86,7 @@ public class MovimientoCrud implements IGenericoDao<Movimiento>{
     public List<Movimiento> consultar() throws SQLException {
         
         PreparedStatement sentencia = null;
-        List<Cliente> lista = new ArrayList<>();
+        List<Movimiento> lista = new ArrayList<>();
         try{
             String sql = "SELECT * FROM movimiento;";
             sentencia = cnn.prepareStatement(sql);
@@ -99,14 +101,34 @@ public class MovimientoCrud implements IGenericoDao<Movimiento>{
     }
 
     @Override
-    public Movimiento consular(Long id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Movimiento consultar(Long id) throws SQLException {
+        PreparedStatement sentencia = null;
+        Movimiento movimiento = new Movimiento();
+        try{
+            String sql = "SELECT * FROM movimiento WHERE id_movimiento = ?;";
+            sentencia = cnn.prepareStatement(sql);
+            sentencia.setLong(ID, id);
+            ResultSet rs = sentencia.executeQuery();
+            
+            if (rs.next()) {
+                movimiento = getMovimiento(rs);
+            }
+        } finally{
+            Conexion.desconectar(sentencia);
+        }
+        return movimiento;
     }
 
-    private Cliente getMovimiento(ResultSet rs) {
+    private static Movimiento getMovimiento(ResultSet rs) throws SQLException {
     
         Movimiento movimiento = new Movimiento();
         movimiento.setDescripcion(rs.getString("descripcion"));
+        movimiento.setFecha(rs.getDate("fecha"));
+        movimiento.setValor(rs.getLong("valor"));
+        movimiento.setCuota(rs.getInt("valor"));
+        movimiento.setTipoMovimiento(new TipoMovimiento(rs.getLong("id_tipo_movimiento")));
+        movimiento.setClienteProducto(new ClienteProducto(rs.getLong("id_cliente_producto")));
+        return movimiento;
     }
  
 }

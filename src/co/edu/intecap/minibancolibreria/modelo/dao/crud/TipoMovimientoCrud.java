@@ -47,7 +47,7 @@ public class TipoMovimientoCrud implements IGenericoDao<TipoMovimiento>{
     }
 
     @Override
-    public TipoMovimiento consular(Long id) throws SQLException {
+    public TipoMovimiento consultar(Long id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

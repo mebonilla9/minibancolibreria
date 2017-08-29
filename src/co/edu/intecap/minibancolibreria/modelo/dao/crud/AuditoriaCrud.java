@@ -48,7 +48,7 @@ public class AuditoriaCrud implements IGenericoDao<Auditoria> {
   }
 
   @Override
-  public Auditoria consular(Long id) throws SQLException {
+  public Auditoria consultar(Long id) throws SQLException {
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
 

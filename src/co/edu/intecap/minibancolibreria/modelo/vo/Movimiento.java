@@ -64,8 +64,8 @@ public class Movimiento {
         return cuota;
     }
 
-    public void setCuotas(Integer cuotas) {
-        this.cuota = cuotas;
+    public void setCuota(Integer cuota) {
+        this.cuota = cuota;
     }
 
     public TipoMovimiento getTipoMovimiento() {
