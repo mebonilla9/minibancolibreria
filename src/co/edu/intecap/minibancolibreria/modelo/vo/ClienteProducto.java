@@ -23,8 +23,8 @@ public class ClienteProducto {
     private Double interes;
     private Boolean estadoPago;
     private Integer numeroCuotas;
-    private TipoProducto idTipoProducto;
-    private Cliente idCliente;
+    private TipoProducto tipoProducto;
+    private Cliente cliente;
 
     public ClienteProducto() {
     
@@ -114,20 +114,20 @@ public class ClienteProducto {
         this.numeroCuotas = numeroCuotas;
     }
 
-    public TipoProducto getIdTipoProducto() {
-        return idTipoProducto;
+    public TipoProducto getTipoProducto() {
+        return tipoProducto;
     }
 
-    public void setIdTipoProducto(TipoProducto idTipoProducto) {
-        this.idTipoProducto = idTipoProducto;
+    public void setTipoProducto(TipoProducto tipoProducto) {
+        this.tipoProducto = tipoProducto;
     }
 
-    public Cliente getIdCliente() {
-        return idCliente;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setIdCliente(Cliente idCliente) {
-        this.idCliente = idCliente;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
     
     
