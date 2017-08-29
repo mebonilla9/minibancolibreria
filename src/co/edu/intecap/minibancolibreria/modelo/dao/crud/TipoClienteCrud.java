@@ -18,38 +18,38 @@ import java.util.List;
  */
 public class TipoClienteCrud implements IGenericoDao<TipoCliente> {
 
-  protected final int ID = 1;
-  protected Connection cnn;
+    protected final int ID = 1;
+    protected Connection cnn;
 
-  public TipoClienteCrud(Connection cnn) {
-    this.cnn = cnn;
-  }
-
-  @Override
-  public void insertar(TipoCliente entidad) throws SQLException {
-    PreparedStatement sentencia = null;
-    try {
-      int i = 1;
-      String sql = "INSERT INTO tipo_cliente(nombre, estado) VALUES(?,?)";
-
-    } finally {
-      Conexion.desconectar(sentencia);
+    public TipoClienteCrud(Connection cnn) {
+        this.cnn = cnn;
     }
-  }
 
-  @Override
-  public void editar(TipoCliente entidad) throws SQLException {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
+    @Override
+    public void insertar(TipoCliente entidad) throws SQLException {
+        PreparedStatement sentencia = null;
+        try {
+            int i = 1;
+            String sql = "INSERT INTO tipo_cliente(nombre, estado) VALUES(?,?)";
 
-  @Override
-  public List<TipoCliente> consultar() throws SQLException {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
+        } finally {
+            Conexion.desconectar(sentencia);
+        }
+    }
 
-  @Override
-  public TipoCliente consular(Long id) throws SQLException {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
+    @Override
+    public void editar(TipoCliente entidad) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<TipoCliente> consultar() throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public TipoCliente consular(Long id) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

@@ -21,7 +21,7 @@ public class Cliente {
     private String direccion;
     private String usuario;
     private String contrasena;
-    private Date fechaNacimieno;
+    private Date fechaNacimiento;
     private String correo;
     private Integer rol;
     private TipoDocumento tipoDocumento;
@@ -149,15 +149,15 @@ public class Cliente {
     /**
      * @return the fechaNacimieno
      */
-    public Date getFechaNacimieno() {
-        return fechaNacimieno;
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
     /**
-     * @param fechaNacimieno the fechaNacimieno to set
+     * @param fechaNacimiento the fechaNacimieno to set
      */
-    public void setFechaNacimieno(Date fechaNacimieno) {
-        this.fechaNacimieno = fechaNacimieno;
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     /**
