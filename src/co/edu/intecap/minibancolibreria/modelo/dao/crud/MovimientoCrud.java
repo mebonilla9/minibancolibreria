@@ -101,7 +101,7 @@ public class MovimientoCrud implements IGenericoDao<Movimiento>{
     }
 
     @Override
-    public Movimiento consular(Long id) throws SQLException {
+    public Movimiento consultar(Long id) throws SQLException {
         PreparedStatement sentencia = null;
         Movimiento movimiento = new Movimiento();
         try{

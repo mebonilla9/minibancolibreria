@@ -59,7 +59,7 @@ public class GenericoDelegado<T> {
     
     public T consultar(Long id) throws MiniBancoException{
         try {
-            return (T) genericoDao.consular(id);
+            return (T) genericoDao.consultar(id);
         } catch (SQLException e) {
             e.printStackTrace(System.err);
             Conexion.rollback(cnn);

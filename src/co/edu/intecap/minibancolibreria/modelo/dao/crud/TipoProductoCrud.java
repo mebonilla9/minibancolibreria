@@ -82,7 +82,7 @@ public class TipoProductoCrud implements IGenericoDao<TipoProducto> {
     }
 
     @Override
-    public TipoProducto consular(Long id) throws SQLException {
+    public TipoProducto consultar(Long id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
