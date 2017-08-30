@@ -22,21 +22,4 @@ public class MovimientoDelegado extends GenericoDelegado<Movimiento>{
         movimientoDao = new MovimientoDao(cnn);
         genericoDao = movimientoDao;
     }
-    
-    /*{
-        try {
-            List<Cliente> consultar = new ClienteDelegado(cnn).consultar();
-            for (Cliente cliente : consultar) {
-                cliente.setContrasena("123456789!");
-                new ClienteDelegado(cnn).editar(cliente);
-            }
-            Cliente nuevoCliente = new Cliente();
-            
-            new ClienteDelegado(cnn).insertar(nuevoCliente);
-            Conexion.commit(cnn);
-        } catch (MiniBancoException ex) {
-            System.out.println("Mensaje: "+ex.getMensaje());
-        }
-    }*/
-    
 }

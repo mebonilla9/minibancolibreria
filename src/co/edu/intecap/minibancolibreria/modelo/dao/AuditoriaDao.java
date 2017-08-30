@@ -4,18 +4,16 @@
  * and open the template in the editor.
  */
 package co.edu.intecap.minibancolibreria.modelo.dao;
+import co.edu.intecap.minibancolibreria.modelo.dao.crud.AuditoriaCrud;
 
-import co.edu.intecap.minibancolibreria.modelo.dao.crud.TipoClienteCrud;
 import java.sql.Connection;
 
 /**
  *
  * @author Nelcy
  */
-public class TipoClienteDao extends TipoClienteCrud {
-    
-    public TipoClienteDao(Connection cnn) {
+public class AuditoriaDao extends AuditoriaCrud{
+    public AuditoriaDao(Connection cnn) {
         super(cnn);
     }
-    
 }
