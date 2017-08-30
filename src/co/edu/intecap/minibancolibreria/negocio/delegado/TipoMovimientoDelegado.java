@@ -24,7 +24,7 @@ public class TipoMovimientoDelegado extends GenericoDelegado<TipoMovimiento>{
     tipomovimientoDao = new TipoMovimientoDao(cnn);
     genericoDao=tipomovimientoDao;
     }
-     {
+    /** {
         try {
             List<TipoMovimiento> consultar = new TipoMovimientoDelegado(cnn).consultar();
             for (TipoMovimiento tipomovimiento : consultar) {
@@ -38,5 +38,5 @@ public class TipoMovimientoDelegado extends GenericoDelegado<TipoMovimiento>{
         } catch (MiniBancoException ex) {
             System.out.println("Mensaje: "+ex.getMensaje());
         }
-    }
+    }**/
 }
