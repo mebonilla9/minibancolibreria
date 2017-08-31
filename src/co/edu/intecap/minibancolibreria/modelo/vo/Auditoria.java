@@ -16,7 +16,7 @@ public class Auditoria {
   private Long idAuditoria;
   private String transaccion;
   private Date fecha;
-  private Cliente idCliente;
+  private Cliente cliente;
 
   public Auditoria() {
     
@@ -50,11 +50,11 @@ public class Auditoria {
     this.fecha = fecha;
   }
 
-  public Cliente getIdCliente() {
-    return idCliente;
+  public Cliente getCliente() {
+    return cliente;
   }
 
-  public void setIdCliente(Cliente idCliente) {
-    this.idCliente = idCliente;
+  public void setCliente(Cliente cliente) {
+    this.cliente = cliente;
   }
 }
