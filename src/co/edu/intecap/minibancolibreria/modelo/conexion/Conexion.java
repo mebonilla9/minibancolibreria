@@ -11,8 +11,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -28,6 +26,11 @@ public final class Conexion {
                     "minibanco",
                     "123456"
             );
+            /*Connection cnn = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/minibanco",
+                    "root",
+                    "123456"
+            );*/
             cnn.setAutoCommit(false);
             return cnn;
         } catch (ClassNotFoundException | SQLException e) {
