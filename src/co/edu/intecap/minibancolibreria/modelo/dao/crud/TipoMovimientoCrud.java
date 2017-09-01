@@ -105,7 +105,7 @@ public class TipoMovimientoCrud implements IGenericoDao<TipoMovimiento> {
 
     private static TipoMovimiento getTipoMovimiento(ResultSet rs) throws SQLException {
        TipoMovimiento tipomovimiento=new TipoMovimiento();
-       //tipomovimiento.setNombre(rs.getLong("id_tipo_movimiento"));
+       tipomovimiento.setidTipoMovimiento(rs.getLong("id_tipo_movimiento"));
        tipomovimiento.setNombre(rs.getString("nombre"));
        tipomovimiento.setEstado(rs.getBoolean("estado"));
        return tipomovimiento;

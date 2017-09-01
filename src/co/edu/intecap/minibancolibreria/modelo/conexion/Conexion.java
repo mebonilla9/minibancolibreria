@@ -24,9 +24,9 @@ public final class Conexion {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection cnn = DriverManager.getConnection(
-                    "jdbc:mysql://192.168.7.127:3306/minibanco",
+                    "jdbc:mysql://192.168.7.12:3306/minibanco",
                     "minibanco",
-                    "1234"
+                    "123456"
             );
             cnn.setAutoCommit(false);
             return cnn;
