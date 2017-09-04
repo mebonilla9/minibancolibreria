@@ -21,7 +21,8 @@ public enum EMensajes {
     ERROR_CONSULTAR(-1, "Error al consultar el registro"),
     ERROR_MODIFICAR(-1, "Error al modificar el registro"),
     ERROR_REGISTRO_EXISTE(-1, "El registro ya existe"),
-    ERROR_CONEXION_BD(-2, "No hay conexion con la base de datos");
+    ERROR_CONEXION_BD(-2, "No hay conexion con la base de datos"),
+    ERROR_FORMATO_FECHA(-3,"Digite una fecha valida debe usar el siguiente formato (dd-MM-yyyy)");
 
     private EMensajes(int codigo, String descripcion) {
         this.codigo = codigo;

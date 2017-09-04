@@ -5,14 +5,13 @@
  */
 package co.edu.intecap.minibancolibreria.negocio.delegado;
 
-import co.edu.intecap.minibancolibreria.modelo.conexion.Conexion;
 import co.edu.intecap.minibancolibreria.modelo.dao.ClienteDao;
 import co.edu.intecap.minibancolibreria.modelo.vo.Cliente;
+import co.edu.intecap.minibancolibreria.negocio.constantes.EMensajes;
 import co.edu.intecap.minibancolibreria.negocio.excepciones.MiniBancoException;
 import java.sql.Connection;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 
 /**
  *
@@ -27,7 +26,16 @@ public class ClienteDelegado extends GenericoDelegado<Cliente> {
         clienteDao = new ClienteDao(cnn);
         genericoDao = clienteDao;
     }
-    
+
+    public ResultSetMetaData consultarColumnasCliente() throws MiniBancoException {
+        try {
+            return clienteDao.columnasCliente();
+        } catch (SQLException e) {
+            e.printStackTrace(System.err);
+            throw new MiniBancoException(EMensajes.ERROR_CONSULTAR);
+        }
+    }
+
     /*{
         try {
             List<Cliente> consultar = new ClienteDelegado(cnn).consultar();
@@ -43,5 +51,4 @@ public class ClienteDelegado extends GenericoDelegado<Cliente> {
             System.out.println("Mensaje: "+ex.getMensaje());
         }
     }*/
-
 }
