@@ -13,8 +13,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import javax.sql.rowset.RowSetMetaDataImpl;
 
 /**
@@ -41,6 +39,25 @@ public class ClienteDao extends ClienteCrud{
             Conexion.desconectar(sentencia);
         }
         return columnas;
+    }
+    
+    public Cliente consultar(String usuario, String contrasena) throws SQLException {
+        PreparedStatement sentencia = null;
+        Cliente cliente = new Cliente();
+        try{
+            String sql = "SELECT * FROM cliente WHERE usuario = ? AND contrasena = ?;";
+            sentencia = cnn.prepareStatement(sql);
+            sentencia.setString(1,usuario);
+            sentencia.setString(2,contrasena);
+            ResultSet rs = sentencia.executeQuery();
+            
+            if (rs.next()) {
+                cliente = getCliente(rs);
+            }
+        } finally{
+            Conexion.desconectar(sentencia);
+        }
+        return cliente;
     }
     
 }

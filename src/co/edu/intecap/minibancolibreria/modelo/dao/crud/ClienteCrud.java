@@ -125,7 +125,7 @@ public class ClienteCrud implements IGenericoDao<Cliente> {
         return cliente;
     }
 
-    private static Cliente getCliente(ResultSet rs) throws SQLException {
+    public static Cliente getCliente(ResultSet rs) throws SQLException {
         Cliente cliente = new Cliente();
         cliente.setIdCliente(rs.getLong("id_cliente"));
         cliente.setNombre(rs.getString("nombre"));

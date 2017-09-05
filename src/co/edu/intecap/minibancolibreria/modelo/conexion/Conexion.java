@@ -28,7 +28,7 @@ public final class Conexion {
             );*/
             Connection cnn = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/minibanco",
-                    "root",
+                    "minibanco",
                     "123456"
             );
             cnn.setAutoCommit(false);

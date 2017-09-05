@@ -35,6 +35,15 @@ public class ClienteDelegado extends GenericoDelegado<Cliente> {
             throw new MiniBancoException(EMensajes.ERROR_CONSULTAR);
         }
     }
+    
+    public Cliente consultaLogin(String usuario, String contrasena) throws MiniBancoException{
+        try {
+            return clienteDao.consultar(usuario, contrasena);
+        } catch (SQLException e) {
+            e.printStackTrace(System.err);
+            throw new MiniBancoException(EMensajes.ERROR_CONSULTAR);
+        }
+    }
 
     /*{
         try {
