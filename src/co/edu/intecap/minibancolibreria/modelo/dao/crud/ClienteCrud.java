@@ -35,20 +35,20 @@ public class ClienteCrud implements IGenericoDao<Cliente> {
         PreparedStatement sentencia = null;
         try {
             int i = 1;
-            String sql = "INSERT INTO cliente(nombre,apellido,identificacion,telefono,direccion,usuario,contrasena,fecha_nacimiento,correo,rol,id_tipo_cliente,id_tipo_documento) VALUES(?,?,?,?,?,?,?,?,?,?,?,?);";
+            String sql = "INSERT INTO cliente(nombre,apellido,identificacion,telefono,direccion,usuario,contrasena,fecha_nacimiento,correo,id_tipo_cliente,id_tipo_documento,estado) VALUES(?,?,?,?,?,?,?,?,?,?,?,?);";
             sentencia = cnn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            sentencia.setObject(i++, entidad.getNombre());
-            sentencia.setObject(i++, entidad.getApellido());
+            sentencia.setObject(i++, entidad.getNombre().toUpperCase());
+            sentencia.setObject(i++, entidad.getApellido().toUpperCase());
             sentencia.setObject(i++, entidad.getIdentificacion());
             sentencia.setObject(i++, entidad.getTelefono());
-            sentencia.setObject(i++, entidad.getDireccion());
-            sentencia.setObject(i++, entidad.getUsuario());
+            sentencia.setObject(i++, entidad.getDireccion().toUpperCase());
+            sentencia.setObject(i++, entidad.getUsuario().toUpperCase());
             sentencia.setObject(i++, entidad.getContrasena());
             sentencia.setObject(i++, entidad.getFechaNacimiento());
-            sentencia.setObject(i++, entidad.getCorreo());
-            sentencia.setObject(i++, entidad.getRol());
+            sentencia.setObject(i++, entidad.getCorreo().toUpperCase());
             sentencia.setObject(i++, entidad.getTipoCliente().getIdTipoCliente());
             sentencia.setObject(i++, entidad.getTipoDocumento().getIdTipoDocumento());
+            sentencia.setObject(i++, entidad.getEstado());
 
             sentencia.executeUpdate();
 
@@ -67,20 +67,20 @@ public class ClienteCrud implements IGenericoDao<Cliente> {
         PreparedStatement sentencia = null;
         try {
             int i = 1;
-            String sql = "UPDATE cliente SET nombre = ?, apellido = ?, identificacion = ?, telefono = ?, direccion = ?, usuario = ?, contrasena = ?, fecha_nacimiento = ?, correo = ?, rol = ?, id_tipo_cliente = ?, id_tipo_documento = ? WHERE id_cliente = ?;";
+            String sql = "UPDATE cliente SET nombre = ?, apellido = ?, identificacion = ?, telefono = ?, direccion = ?, usuario = ?, contrasena = ?, fecha_nacimiento = ?, correo = ?, id_tipo_cliente = ?, id_tipo_documento = ?, estado = ? WHERE id_cliente = ?;";
             sentencia = cnn.prepareStatement(sql);
-            sentencia.setObject(i++, entidad.getNombre());
-            sentencia.setObject(i++, entidad.getApellido());
+            sentencia.setObject(i++, entidad.getNombre().toUpperCase());
+            sentencia.setObject(i++, entidad.getApellido().toUpperCase());
             sentencia.setObject(i++, entidad.getIdentificacion());
             sentencia.setObject(i++, entidad.getTelefono());
-            sentencia.setObject(i++, entidad.getDireccion());
-            sentencia.setObject(i++, entidad.getUsuario());
+            sentencia.setObject(i++, entidad.getDireccion().toUpperCase());
+            sentencia.setObject(i++, entidad.getUsuario().toUpperCase());
             sentencia.setObject(i++, entidad.getContrasena());
             sentencia.setObject(i++, entidad.getFechaNacimiento());
-            sentencia.setObject(i++, entidad.getCorreo());
-            sentencia.setObject(i++, entidad.getRol());
+            sentencia.setObject(i++, entidad.getCorreo().toUpperCase());
             sentencia.setObject(i++, entidad.getTipoCliente().getIdTipoCliente());
             sentencia.setObject(i++, entidad.getTipoDocumento().getIdTipoDocumento());
+            sentencia.setObject(i++, entidad.getEstado());
             sentencia.setObject(i++, entidad.getIdCliente());
 
             sentencia.executeUpdate();
@@ -128,18 +128,18 @@ public class ClienteCrud implements IGenericoDao<Cliente> {
     public static Cliente getCliente(ResultSet rs) throws SQLException {
         Cliente cliente = new Cliente();
         cliente.setIdCliente(rs.getLong("id_cliente"));
-        cliente.setNombre(rs.getString("nombre"));
-        cliente.setApellido(rs.getString("apellido"));
+        cliente.setNombre(rs.getString("nombre").toUpperCase());
+        cliente.setApellido(rs.getString("apellido").toUpperCase());
         cliente.setIdentificacion(rs.getString("identificacion"));
         cliente.setTelefono(rs.getString("telefono"));
-        cliente.setDireccion(rs.getString("direccion"));
-        cliente.setUsuario(rs.getString("usuario"));
+        cliente.setDireccion(rs.getString("direccion").toUpperCase());
+        cliente.setUsuario(rs.getString("usuario").toUpperCase());
         cliente.setContrasena(rs.getString("contrasena"));
         cliente.setFechaNacimiento(rs.getDate("fecha_nacimiento"));
-        cliente.setCorreo(rs.getString("correo"));
-        cliente.setRol(rs.getInt("rol"));
+        cliente.setCorreo(rs.getString("correo").toUpperCase());
         cliente.setTipoCliente(new TipoCliente(rs.getLong("id_tipo_cliente")));
         cliente.setTipoDocumento(new TipoDocumento(rs.getLong("id_tipo_documento")));
+        cliente.setEstado(rs.getBoolean("estado"));
         return cliente;
     }
 

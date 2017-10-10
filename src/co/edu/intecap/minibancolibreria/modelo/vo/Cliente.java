@@ -23,15 +23,23 @@ public class Cliente {
     private String contrasena;
     private Date fechaNacimiento;
     private String correo;
-    private Integer rol;
     private TipoDocumento tipoDocumento;
     private TipoCliente tipoCliente;
+    private Boolean estado;
 
     public Cliente() {
     }
 
     public Cliente(Long idCliente) {
         this.idCliente = idCliente;
+    }
+
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
     }
 
     /**
@@ -172,20 +180,6 @@ public class Cliente {
      */
     public void setCorreo(String correo) {
         this.correo = correo;
-    }
-
-    /**
-     * @return the rol
-     */
-    public Integer getRol() {
-        return rol;
-    }
-
-    /**
-     * @param rol the rol to set
-     */
-    public void setRol(Integer rol) {
-        this.rol = rol;
     }
 
     /**

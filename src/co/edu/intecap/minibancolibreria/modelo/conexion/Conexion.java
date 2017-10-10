@@ -21,6 +21,7 @@ public final class Conexion {
     public static Connection conectar() throws MiniBancoException {
         try {
             Class.forName("com.mysql.jdbc.Driver");
+            
             /*Connection cnn = DriverManager.getConnection(
                     "jdbc:mysql://192.168.7.12:3306/minibanco",
                     "minibanco",
@@ -28,8 +29,8 @@ public final class Conexion {
             );*/
             Connection cnn = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/minibanco",
-                    "minibanco",
-                    "123456"
+                    "root",
+                    "Ingeniero201"
             );
             cnn.setAutoCommit(false);
             return cnn;

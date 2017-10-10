@@ -5,38 +5,32 @@
  */
 package co.edu.intecap.minibancolibreria.negocio.delegado;
 
-import co.edu.intecap.minibancolibreria.modelo.conexion.Conexion;
-import co.edu.intecap.minibancolibreria.modelo.dao.TipoClienteDao;
 import co.edu.intecap.minibancolibreria.modelo.dao.TipoMovimientoDao;
 import co.edu.intecap.minibancolibreria.modelo.vo.TipoMovimiento;
+import co.edu.intecap.minibancolibreria.negocio.constantes.EMensajes;
 import co.edu.intecap.minibancolibreria.negocio.excepciones.MiniBancoException;
 import java.sql.Connection;
-import java.util.List;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 
 /**
  *
  * @author Admin VICTOR ARIAS
  */
 public class TipoMovimientoDelegado extends GenericoDelegado<TipoMovimiento>{
-     private final TipoMovimientoDao tipomovimientoDao;
+     private final TipoMovimientoDao tipoMovimientoDao;
     public TipoMovimientoDelegado(Connection cnn) {
         super(cnn);
-    tipomovimientoDao = new TipoMovimientoDao(cnn);
-    genericoDao=tipomovimientoDao;
+    tipoMovimientoDao = new TipoMovimientoDao(cnn);
+    genericoDao=tipoMovimientoDao;
     }
-    /** {
+    
+    public ResultSetMetaData consultarColumnasTipoMovimiento() throws MiniBancoException {
         try {
-            List<TipoMovimiento> consultar = new TipoMovimientoDelegado(cnn).consultar();
-            for (TipoMovimiento tipomovimiento : consultar) {
-                tipomovimiento.setNombre("123456789!");
-                new TipoMovimientoDao(cnn).editar(tipomovimiento);
-            }
-            TipoMovimiento nuevoTipoMovimiento = new TipoMovimiento();
-            
-            new TipoMovimientoDao(cnn).insertar(nuevoTipoMovimiento);
-            Conexion.commit(cnn);
-        } catch (MiniBancoException ex) {
-            System.out.println("Mensaje: "+ex.getMensaje());
+            return tipoMovimientoDao.columnasTipoMovimiento();
+        } catch (SQLException e) {
+            e.printStackTrace(System.err);
+            throw new MiniBancoException(EMensajes.ERROR_CONSULTAR);
         }
-    }**/
+    }
 }

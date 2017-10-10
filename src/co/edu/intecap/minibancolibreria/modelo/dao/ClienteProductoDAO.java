@@ -12,9 +12,9 @@ import java.sql.Connection;
  *
  * @author joave
  */
-public class ClienteProductoDAO extends ClienteProductoCrud{
+public class ClienteProductoDao extends ClienteProductoCrud{
     
-    public ClienteProductoDAO(Connection cnn){
+    public ClienteProductoDao(Connection cnn){
         super(cnn);
     }
     
