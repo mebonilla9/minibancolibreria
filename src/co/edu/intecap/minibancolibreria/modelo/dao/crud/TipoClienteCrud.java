@@ -35,7 +35,7 @@ public class TipoClienteCrud implements IGenericoDao<TipoCliente> {
             int i = 1;
             String sql = "INSERT INTO tipo_cliente(nombre, estado) VALUES(?,?)";
             sentencia = cnn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            sentencia.setObject(i++, entidad.getNombre().toUpperCase());
+            sentencia.setObject(i++, entidad.getNombre());
             sentencia.setObject(i++, entidad.getEstado());
             
             sentencia.executeUpdate();
@@ -58,7 +58,7 @@ public class TipoClienteCrud implements IGenericoDao<TipoCliente> {
             int i = 1;
             String sql = "UPDATE tipo_cliente SET nombre = ?, estado = ? WHERE id_tipo_cliente = ?;";
             sentencia = cnn.prepareStatement(sql);
-            sentencia.setObject(i++, entidad.getNombre().toUpperCase());
+            sentencia.setObject(i++, entidad.getNombre());
             sentencia.setObject(i++, entidad.getEstado());
             sentencia.setObject(i++, entidad.getIdTipoCliente());
 
@@ -107,7 +107,7 @@ public class TipoClienteCrud implements IGenericoDao<TipoCliente> {
     private TipoCliente getTipoCliente(ResultSet rs) throws SQLException{
         TipoCliente tipoCliente = new TipoCliente();
         tipoCliente.setIdTipoCliente(rs.getLong("id_tipo_cliente"));
-        tipoCliente.setNombre(rs.getString("nombre").toUpperCase());
+        tipoCliente.setNombre(rs.getString("nombre"));
         tipoCliente.setEstado(rs.getBoolean("estado"));
         return tipoCliente;
     }

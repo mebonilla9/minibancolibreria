@@ -37,15 +37,15 @@ public class ClienteCrud implements IGenericoDao<Cliente> {
             int i = 1;
             String sql = "INSERT INTO cliente(nombre,apellido,identificacion,telefono,direccion,usuario,contrasena,fecha_nacimiento,correo,id_tipo_cliente,id_tipo_documento,estado) VALUES(?,?,?,?,?,?,?,?,?,?,?,?);";
             sentencia = cnn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            sentencia.setObject(i++, entidad.getNombre().toUpperCase());
-            sentencia.setObject(i++, entidad.getApellido().toUpperCase());
+            sentencia.setObject(i++, entidad.getNombre());
+            sentencia.setObject(i++, entidad.getApellido());
             sentencia.setObject(i++, entidad.getIdentificacion());
             sentencia.setObject(i++, entidad.getTelefono());
-            sentencia.setObject(i++, entidad.getDireccion().toUpperCase());
-            sentencia.setObject(i++, entidad.getUsuario().toUpperCase());
+            sentencia.setObject(i++, entidad.getDireccion());
+            sentencia.setObject(i++, entidad.getUsuario());
             sentencia.setObject(i++, entidad.getContrasena());
             sentencia.setObject(i++, entidad.getFechaNacimiento());
-            sentencia.setObject(i++, entidad.getCorreo().toUpperCase());
+            sentencia.setObject(i++, entidad.getCorreo());
             sentencia.setObject(i++, entidad.getTipoCliente().getIdTipoCliente());
             sentencia.setObject(i++, entidad.getTipoDocumento().getIdTipoDocumento());
             sentencia.setObject(i++, entidad.getEstado());
@@ -69,15 +69,15 @@ public class ClienteCrud implements IGenericoDao<Cliente> {
             int i = 1;
             String sql = "UPDATE cliente SET nombre = ?, apellido = ?, identificacion = ?, telefono = ?, direccion = ?, usuario = ?, contrasena = ?, fecha_nacimiento = ?, correo = ?, id_tipo_cliente = ?, id_tipo_documento = ?, estado = ? WHERE id_cliente = ?;";
             sentencia = cnn.prepareStatement(sql);
-            sentencia.setObject(i++, entidad.getNombre().toUpperCase());
-            sentencia.setObject(i++, entidad.getApellido().toUpperCase());
+            sentencia.setObject(i++, entidad.getNombre());
+            sentencia.setObject(i++, entidad.getApellido());
             sentencia.setObject(i++, entidad.getIdentificacion());
             sentencia.setObject(i++, entidad.getTelefono());
-            sentencia.setObject(i++, entidad.getDireccion().toUpperCase());
-            sentencia.setObject(i++, entidad.getUsuario().toUpperCase());
+            sentencia.setObject(i++, entidad.getDireccion());
+            sentencia.setObject(i++, entidad.getUsuario());
             sentencia.setObject(i++, entidad.getContrasena());
             sentencia.setObject(i++, entidad.getFechaNacimiento());
-            sentencia.setObject(i++, entidad.getCorreo().toUpperCase());
+            sentencia.setObject(i++, entidad.getCorreo());
             sentencia.setObject(i++, entidad.getTipoCliente().getIdTipoCliente());
             sentencia.setObject(i++, entidad.getTipoDocumento().getIdTipoDocumento());
             sentencia.setObject(i++, entidad.getEstado());
@@ -93,14 +93,14 @@ public class ClienteCrud implements IGenericoDao<Cliente> {
     public List<Cliente> consultar() throws SQLException {
         PreparedStatement sentencia = null;
         List<Cliente> lista = new ArrayList<>();
-        try{
+        try {
             String sql = "SELECT * FROM cliente;";
             sentencia = cnn.prepareStatement(sql);
             ResultSet rs = sentencia.executeQuery();
             while (rs.next()) {
                 lista.add(getCliente(rs));
             }
-        } finally{
+        } finally {
             Conexion.desconectar(sentencia);
         }
         return lista;
@@ -110,16 +110,16 @@ public class ClienteCrud implements IGenericoDao<Cliente> {
     public Cliente consultar(Long id) throws SQLException {
         PreparedStatement sentencia = null;
         Cliente cliente = new Cliente();
-        try{
+        try {
             String sql = "SELECT * FROM cliente WHERE id_cliente = ?;";
             sentencia = cnn.prepareStatement(sql);
             sentencia.setLong(ID, id);
             ResultSet rs = sentencia.executeQuery();
-            
+
             if (rs.next()) {
                 cliente = getCliente(rs);
             }
-        } finally{
+        } finally {
             Conexion.desconectar(sentencia);
         }
         return cliente;
@@ -128,15 +128,15 @@ public class ClienteCrud implements IGenericoDao<Cliente> {
     public static Cliente getCliente(ResultSet rs) throws SQLException {
         Cliente cliente = new Cliente();
         cliente.setIdCliente(rs.getLong("id_cliente"));
-        cliente.setNombre(rs.getString("nombre").toUpperCase());
-        cliente.setApellido(rs.getString("apellido").toUpperCase());
+        cliente.setNombre(rs.getString("nombre"));
+        cliente.setApellido(rs.getString("apellido"));
         cliente.setIdentificacion(rs.getString("identificacion"));
         cliente.setTelefono(rs.getString("telefono"));
-        cliente.setDireccion(rs.getString("direccion").toUpperCase());
-        cliente.setUsuario(rs.getString("usuario").toUpperCase());
+        cliente.setDireccion(rs.getString("direccion"));
+        cliente.setUsuario(rs.getString("usuario"));
         cliente.setContrasena(rs.getString("contrasena"));
         cliente.setFechaNacimiento(rs.getDate("fecha_nacimiento"));
-        cliente.setCorreo(rs.getString("correo").toUpperCase());
+        cliente.setCorreo(rs.getString("correo"));
         cliente.setTipoCliente(new TipoCliente(rs.getLong("id_tipo_cliente")));
         cliente.setTipoDocumento(new TipoDocumento(rs.getLong("id_tipo_documento")));
         cliente.setEstado(rs.getBoolean("estado"));

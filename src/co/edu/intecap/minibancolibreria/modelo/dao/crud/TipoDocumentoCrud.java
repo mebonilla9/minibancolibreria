@@ -35,7 +35,7 @@ public class TipoDocumentoCrud implements IGenericoDao<TipoDocumento>{
             int i = 1;
             String sql = "INSERT INTO tipo_documento(nombre, estado) VALUES (?,?);";
             sentencia = cnn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            sentencia.setObject(i++, entidad.getNombre().toUpperCase());
+            sentencia.setObject(i++, entidad.getNombre());
             sentencia.setObject(i++, entidad.getEstado());
 
             sentencia.executeUpdate();
@@ -58,7 +58,7 @@ public class TipoDocumentoCrud implements IGenericoDao<TipoDocumento>{
             int i = 1;
             String sql = "UPDATE tipo_documento SET nombre = ?, estado = ? WHERE id_tipo_documento = ?;";
             sentencia = cnn.prepareCall(sql);
-            sentencia.setObject(i++, entidad.getNombre().toUpperCase());
+            sentencia.setObject(i++, entidad.getNombre());
             sentencia.setObject(i++, entidad.getEstado());
             sentencia.setObject(i++, entidad.getIdTipoDocumento());
                         
@@ -107,7 +107,7 @@ public class TipoDocumentoCrud implements IGenericoDao<TipoDocumento>{
     private TipoDocumento getTipoDocumento(ResultSet rs) throws SQLException {
         TipoDocumento tipoDocumento = new TipoDocumento();
         tipoDocumento.setIdTipoDocumento(rs.getLong("id_tipo_documento"));
-        tipoDocumento.setNombre(rs.getString("nombre").toUpperCase());
+        tipoDocumento.setNombre(rs.getString("nombre"));
         tipoDocumento.setEstado(rs.getBoolean("estado"));
         return tipoDocumento;
     }

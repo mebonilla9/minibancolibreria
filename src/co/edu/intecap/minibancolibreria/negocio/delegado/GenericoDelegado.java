@@ -17,7 +17,7 @@ import java.util.List;
  *
  * @author Capacitaciones_pc18
  */
-public class GenericoDelegado<T> {
+public abstract class GenericoDelegado<T> {
     
     protected Connection cnn;
     protected IGenericoDao genericoDao;

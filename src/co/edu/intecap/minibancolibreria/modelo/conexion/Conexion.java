@@ -11,6 +11,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 
 /**
  *
@@ -22,19 +26,15 @@ public final class Conexion {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             
-            /*Connection cnn = DriverManager.getConnection(
-                    "jdbc:mysql://192.168.7.12:3306/minibanco",
-                    "minibanco",
-                    "123456"
-            );*/
-            Connection cnn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/minibanco",
-                    "root",
-                    "Ingeniero201"
-            );
+            /*Connection cnn = DriverManager.getConnection("jdbc:mysql://192.168.7.12:3306/minibanco","minibanco","123456");
+            Connection cnn = DriverManager.getConnection("jdbc:mysql://localhost:3306/minibanco","root","Ingeniero201");*/
+            
+            Context ctx = new InitialContext();
+            DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/MiniBancoDS");
+            Connection cnn = ds.getConnection();
             cnn.setAutoCommit(false);
             return cnn;
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (NamingException | ClassNotFoundException | SQLException e) {
             throw new MiniBancoException(EMensajes.ERROR_CONEXION_BD);
         }
     }
