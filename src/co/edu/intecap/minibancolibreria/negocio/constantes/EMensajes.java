@@ -22,6 +22,7 @@ public enum EMensajes {
     ERROR_MODIFICAR(-1, "Error al modificar el registro"),
     ERROR_REGISTRO_EXISTE(-1, "El registro ya existe"),
     ERROR_CONEXION_BD(-2, "No hay conexion con la base de datos"),
+    ERROR_SESION(-2, "La sesión del usuario ha expirado o no existe!"),
     ERROR_FORMATO_FECHA(-3,"Digite una fecha valida debe usar el siguiente formato (dd-MM-yyyy)");
 
     private EMensajes(int codigo, String descripcion) {
