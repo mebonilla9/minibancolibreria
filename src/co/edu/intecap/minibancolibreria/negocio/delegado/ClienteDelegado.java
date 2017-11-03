@@ -12,6 +12,7 @@ import co.edu.intecap.minibancolibreria.negocio.excepciones.MiniBancoException;
 import java.sql.Connection;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  *
@@ -44,6 +45,17 @@ public class ClienteDelegado extends GenericoDelegado<Cliente> {
             throw new MiniBancoException(EMensajes.ERROR_CONSULTAR);
         }
     }
+    
+    public List<Cliente> consultar(Boolean estado) throws MiniBancoException{
+        try {
+            return clienteDao.consultar(estado);
+        } catch (SQLException e) {
+            e.printStackTrace(System.err);
+            throw new MiniBancoException(EMensajes.ERROR_CONSULTAR);
+        }
+    }
+    
+    
 
     /*{
         try {

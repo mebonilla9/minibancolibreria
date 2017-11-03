@@ -7,12 +7,15 @@ package co.edu.intecap.minibancolibreria.modelo.dao;
 
 import co.edu.intecap.minibancolibreria.modelo.conexion.Conexion;
 import co.edu.intecap.minibancolibreria.modelo.dao.crud.ClienteCrud;
+import static co.edu.intecap.minibancolibreria.modelo.dao.crud.ClienteCrud.getCliente;
 import co.edu.intecap.minibancolibreria.modelo.vo.Cliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.sql.rowset.RowSetMetaDataImpl;
 
 /**
@@ -58,6 +61,24 @@ public class ClienteDao extends ClienteCrud{
             Conexion.desconectar(sentencia);
         }
         return cliente;
+    }
+    
+    
+    public List<Cliente> consultar(Boolean estado) throws SQLException {
+        PreparedStatement sentencia = null;
+        List<Cliente> lista = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM cliente WHERE estado = ?;";
+            sentencia = cnn.prepareStatement(sql);
+            sentencia.setBoolean(1, estado);
+            ResultSet rs = sentencia.executeQuery();
+            while (rs.next()) {
+                lista.add(getCliente(rs));
+            }
+        } finally {
+            Conexion.desconectar(sentencia);
+        }
+        return lista;
     }
     
 }
