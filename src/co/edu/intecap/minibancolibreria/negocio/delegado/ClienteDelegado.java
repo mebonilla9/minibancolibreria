@@ -5,6 +5,7 @@
  */
 package co.edu.intecap.minibancolibreria.negocio.delegado;
 
+import co.edu.intecap.minibancolibreria.modelo.conexion.Conexion;
 import co.edu.intecap.minibancolibreria.modelo.dao.ClienteDao;
 import co.edu.intecap.minibancolibreria.modelo.vo.Cliente;
 import co.edu.intecap.minibancolibreria.negocio.constantes.EMensajes;
@@ -52,6 +53,27 @@ public class ClienteDelegado extends GenericoDelegado<Cliente> {
         } catch (SQLException e) {
             e.printStackTrace(System.err);
             throw new MiniBancoException(EMensajes.ERROR_CONSULTAR);
+        }
+    }
+    
+    public void registrarClienteTransaccion(Cliente cliente) throws MiniBancoException{
+        try {
+            // registrar primero tipo cliente
+            if (cliente.getTipoCliente().getIdTipoCliente() == null) {
+                new TipoClienteDelegado(cnn).insertar(cliente.getTipoCliente());
+            }
+            
+            // registrar segundo tipo documento 
+            if (cliente.getTipoDocumento().getIdTipoDocumento() == null) {
+                new TipoDocumentoDelegado(cnn).insertar(cliente.getTipoDocumento());
+            }
+            
+            // registrar el cliente
+            new ClienteDao(cnn).insertar(cliente);
+        } catch (SQLException e) {
+            Conexion.rollback(cnn);
+            e.printStackTrace(System.err);
+            throw new MiniBancoException(EMensajes.ERROR_INSERTAR);
         }
     }
     
